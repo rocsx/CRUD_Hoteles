@@ -1,0 +1,88 @@
+<div class="row">
+    <div class="col-md-12 d-flex justify-content-end">
+      <a (click)="readHoteles()" class="btn btn-primary" role="button" aria-pressed="true">Regresar</a>
+    </div>
+</div>
+
+    <div class="row">
+      <div class="col-md-12">
+
+        <form [formGroup]="update_hotel_form" (ngSubmit)="updateHotel()">
+
+          <div class="form-group">
+            <label for="hotel">Hotel</label>
+            <input type="text" formControlName="hotel" placeholder="Hotel" name="hotel" class="form-control" id="hotel"
+              required>
+
+            <div *ngIf="update_hotel_form.get('hotel').touched && update_hotel_form.get('hotel').hasError('required')"
+              class="alert alert-danger">
+              Hotel is required.
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea name="description" id="description" class="form-control" rows="3" required="required" formControlName="description" placeholder="Description" ></textarea>
+            <div *ngIf="update_hotel_form.get('description').touched && update_hotel_form.get('description').hasError('required')"
+              class="alert alert-danger">
+              Description is required.
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="state">Estado</label>
+            <select formControlName="id_state" name="id_state" class="form-control" >
+              <option *ngFor="let state of states" value="{{state.id_state}}">
+                {{state.state}}
+              </option>
+            </select>
+            <!-- show this error if the field is 'empty' and 'touched' -->
+            <div *ngIf="update_hotel_form.get('id_state').touched && update_hotel_form.get('id_state').hasError('required')"
+              class="alert alert-danger">
+              Estado is required.
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="city">Ciudad</label>
+            <select formControlName="id_city" name="id_city" class="form-control"  required="required">
+              <option *ngFor="let city of cities" value="{{city.id_city}}">
+                {{city.city}}
+              </option>
+            </select>
+            <!-- show this error if the field is 'empty' and 'touched' -->
+            <div *ngIf="update_hotel_form.get('id_city').touched && update_hotel_form.get('id_city').hasError('required')"
+              class="alert alert-danger">
+              City is required.
+            </div>
+          </div>
+
+
+          <div class="form-group">
+            <label for="stars">Estrellas</label>
+            <select formControlName="stars" name="stars" id="stars" class="form-control" required="required" >
+              <option *ngFor="let star of stars" value="{{star}}">{{star}}</option>
+            </select>
+            <div *ngIf="update_hotel_form.get('stars').touched && update_hotel_form.get('stars').hasError('required')"
+              class="alert alert-danger">
+              Estrellas is required.
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="form-check">
+              <label for="status" *ngFor="let status of status1" required="required">
+              <input name="status" [value]="status" type="radio" formControlName="status" checked> {{status}}</label>
+            </div>
+            <div *ngIf="update_hotel_form.get('status').touched && update_hotel_form.get('status').hasError('required')"
+                 class="alert alert-danger">
+              status is required.
+            </div>
+          </div>
+
+          <!-- disable the submit button if the form is 'invalid' -->
+          <button class="btn btn-primary" type="submit" [disabled]="update_hotel_form.invalid"> Actualizar </button>
+        </form>
+      </div>
+    </div>
+

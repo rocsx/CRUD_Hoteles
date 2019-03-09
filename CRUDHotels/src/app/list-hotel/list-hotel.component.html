@@ -1,0 +1,35 @@
+<div class="row">
+    <div class="col-md-12 d-flex justify-content-end">
+        <!-- button to create new hotel -->
+        <a (click)="createHotel()" class="btn btn-primary" role="button" aria-pressed="true">Crear Hotel</a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">.
+      <table class="table table-striped table-hover">
+        <thead>
+        <tr>
+          <th>ID</th>
+          <th>Hotel</th>
+          <th class="text-center">Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let hotel of hotels">
+          <td>{{hotel.id_hotel}}</td>
+          <td>{{hotel.hotel}}</td>
+          <td class="d-flex justify-content-center" >
+          <a (click)="readOneHotel(hotel.id_hotel)"class="btn btn-success " role="button" aria-pressed="true">Ver</a>
+          <a (click)="updateHotel(hotel.id_hotel)" class="btn btn-info " role="button" aria-pressed="true">Editar </a>
+          <a (click)="deleteHotel(hotel.id_hotel)" class="btn btn-danger" role="button" aria-pressed="true">Eliminar </a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+</div>
+
+
+
+

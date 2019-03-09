@@ -1,0 +1,30 @@
+<!-- container -->
+<div class="container">
+  <!-- show page header -->
+  <div class="row">
+    <div class="col-md-12">
+      <div class='page-header'>
+        <h1>{{title}}</h1>
+
+      </div>
+      <app-list-hotel *ngIf="show_read_hotel_html" (show_create_hotel_event)="showCreateHotel($event)"
+        (show_read_one_hotel_event)="showReadOneHotel($event)" (show_update_hotel_event)="showUpdateHotel($event)"
+        (show_delete_hotel_event)="showDeleteHotel($event)"></app-list-hotel>
+
+      <app-add-hotel *ngIf="show_create_hotel_html" (show_read_hotel_event)="showReadHotel($event)"> </app-add-hotel>
+      <app-edit-hotel *ngIf="show_update_hotel_html" [id_hotel]="id_hotel" (show_read_hotel_event)="showReadHotel($event)"></app-edit-hotel>
+      <app-read-one *ngIf="show_read_one_hotel_html" [id_hotel]="id_hotel" (show_read_hotel_event)="showReadHotel($event)"></app-read-one>
+      <app-delete-hotel *ngIf="show_delete_hotel_html" [id_hotel]="id_hotel" (show_read_hotel_event)="showReadHotel($event)">
+      </app-delete-hotel>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+<!-- /container -->
